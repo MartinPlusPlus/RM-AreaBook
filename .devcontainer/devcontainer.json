@@ -1,0 +1,7 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "name": "Flutter",
+    "forwardPorts": [3000]
+}
