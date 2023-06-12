@@ -18,6 +18,8 @@ class MyAppBar extends StatelessWidget {
         children: [
           const IconButton(
             icon: Icon(Icons.menu),
+            color: Color.fromARGB(255, 255, 255, 255),
+            disabledColor: Color.fromARGB(255, 255, 255, 255),
             tooltip: 'Navigation menu',
             onPressed: null, // null disables the button
           ),
@@ -28,6 +30,7 @@ class MyAppBar extends StatelessWidget {
           ),
           const IconButton(
             icon: Icon(Icons.search),
+            disabledColor: Color.fromARGB(255, 255, 255, 255),
             tooltip: 'Search',
             onPressed: null,
           ),
