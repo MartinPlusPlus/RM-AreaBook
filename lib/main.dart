@@ -71,7 +71,7 @@ class _NavBarState extends State<NavBar> {
           ),
         ],
 
-        type: BottomNavigationBarType.shifting,
+        type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black,
         iconSize: 40,
