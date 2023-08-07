@@ -1,44 +1,85 @@
 import 'package:flutter/material.dart';
 
 import 'top_bar.dart';
+import 'nav_bar.dart';
 
-class MyScaffold extends StatelessWidget {
-  const MyScaffold({super.key});
+void main() => runApp(RM_AreaBook());
+
+// Main-entry class
+class RM_AreaBook extends StatelessWidget {
+  const RM_AreaBook({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Material is a conceptual piece
-    // of paper on which the UI appears.
-    return Material(
-      // Column is a vertical, linear layout.
-      child: Column(
-        children: [
-          MainBar(
-            title: Text(
-              'RM: Area Book Planner',
-              style: Theme.of(context) //
-                  .primaryTextTheme
-                  .titleLarge,
-            ),
+    return MaterialApp(
+      home: NavBar(),
+    );
+  }
+}
+
+class NavBar extends StatefulWidget {
+  const NavBar({ super.key });
+
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Search Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('RM: AreaBook'),
+        backgroundColor: Colors.green,
+      ),
+      
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.green
           ),
-          const Expanded(
-            child: Center(
-              child: Text('Hello, world!'),
-            ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+            backgroundColor: Colors.yellow
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+            backgroundColor: Colors.blue
           ),
         ],
+
+        type: BottomNavigationBarType.shifting,
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        iconSize: 40,
+        onTap: _onItemTapped,
+        elevation: 5,
       ),
     );
   }
 }
 
-void main() {
-  runApp(
-    const MaterialApp(
-      title: 'RM: ABP', // used by the OS task switcher
-      home: SafeArea(
-        child: MyScaffold(),
-      ),
-    ),
-  );
-}
+
