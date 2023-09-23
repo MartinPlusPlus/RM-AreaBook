@@ -11,7 +11,7 @@ class RM_AreaBook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: NavBar(),
     );
   }
@@ -28,8 +28,10 @@ class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Search Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Agenda Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('People Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Map', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Sync Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
 
   void _onItemTapped(int index) {
@@ -42,8 +44,8 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RM: AreaBook'),
-        backgroundColor: Colors.green,
+        title: const Text('RM: AreaBook', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color.fromARGB(255, 0, 48, 87),
       ),
       
       body: Center(
@@ -59,14 +61,26 @@ class _NavBarState extends State<NavBar> {
           ),
 
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.calendar_today),
+            label: 'Agenda',
             backgroundColor: Colors.yellow
           ),
 
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'People',
+            backgroundColor: Colors.blue
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            label: 'Map',
+            backgroundColor: Colors.blue
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sync),
+            label: 'Sync',
             backgroundColor: Colors.blue
           ),
         ],
